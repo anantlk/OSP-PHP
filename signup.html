@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>New user signup </title>
+  <script language="javascript">
+    function check() {
+      var passwd = document.getElementById('passwd').value;
+      var cnfm_passwd = document.getElementById('cnfm_passwd').value;
+      if (passwd === "" || passwd !== cnfm_passwd) {
+        alert("passwords not matching");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <style>
+    form {
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <form method="POST" action="signupuser.php" style="border:1px solid #ccc" onsubmit="return check()">
+      <fieldset>
+        <legend>
+          <h1>Signup Form</h1>
+        </legend>
+        <div class="container">
+          <input type="text" placeholder="Registration No" name="id" required><br/>
+          <input type="text" placeholder="Firstname" name="firstname" required><br/>
+          <input type="text" placeholder="Lastname" name="lastname" required><br/>
+          <input type="email" placeholder="Email" name="email" required><br/>
+
+          <input type="password" placeholder="Password" name="psw" id="passwd" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required><br>
+
+          <input type="password" placeholder="Confirm Password" name="psw-repeat" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+            id="cnfm_passwd" required>
+
+
+          <div class="clearfix">
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </center>
+  <?php
+include("database.php");
+?>
+
+</body>
+
+</html>
